@@ -135,7 +135,7 @@ def process_data(device, dataset, gso_type, q):
     # convert matrix to tensor
     # move tensor to device
     if sp.issparse(feature):
-        feature = utility.cnv_sparse_mat_to_coo_tensor(feature, device)
+        feature = utility.cnv_sparse_mat_to_coo_tensor(sp_mat=feature, dtype=np.float32, device=device)
     else:
         feature = torch.from_numpy(feature).to(device)
     gso_real = utility.cnv_sparse_mat_to_coo_tensor(sp_mat=gso_real, dtype=np.float32, device=device)
